@@ -14,26 +14,31 @@ namespace AvaloniaApplication1.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    private readonly MainWindow? _window;
+    private  MainWindow? _window;
     public bool IsDialogsAvailable { get; }
     public MainViewModel()
     {
-        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime app)
-        {
-            if (app.MainWindow is not MainWindow w)
-                return;
 
-            _window = w;
-            IsDialogsAvailable = true;
-        }
+        IsDialogsAvailable = true;
     }
 
+    private static MainWindow getCurrentWindow()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime app)
+        {
+            if (app.MainWindow is MainWindow w)
+            {
+                return w;
+            }
+        }
+        return null;
+    }
 
     [RelayCommand]
-    public void  ConfirmDialog()
+    public async void ConfirmDialog()
     {
-        //if (_window == null) return;
-        var result = DialogHelper.CreateAlertDialog(new AlertDialogBuilderParams
+        if (_window == null) _window=getCurrentWindow();
+        var result =await DialogHelper.CreateAlertDialog(new AlertDialogBuilderParams
         {
             ContentHeader = "Confirm action",
             SupportingText = "Are you sure to DELETE 20 FILES?",
@@ -52,7 +57,7 @@ public partial class MainViewModel : ViewModelBase
                     Result = "delete"
                 }
             }
-        }).ShowDialog(_window).Result;
+        }).ShowDialog(_window);
         Console.WriteLine(result);
     }
 
