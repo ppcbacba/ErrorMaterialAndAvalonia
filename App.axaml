@@ -1,0 +1,30 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="AvaloniaApplication1.App"
+			       xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
+			  xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+			     xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia">
+	<!--RequestedThemeVariant="Default"-->
+	<!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+	<Application.Resources>
+		<FontFamily x:Key="ContentControlThemeFontFamily">fonts:Inter#Inter, $Default</FontFamily>
+	</Application.Resources>
+	<Application.Styles>
+		<themes:MaterialTheme PrimaryColor="Purple" SecondaryColor="Indigo">
+			<themes:MaterialTheme.Resources>
+				<ResourceDictionary>
+					<ResourceDictionary.ThemeDictionaries>
+						<ResourceDictionary x:Key="{x:Static themes:Theme.MaterialLight}">
+						</ResourceDictionary>
+						<ResourceDictionary x:Key="{x:Static themes:Theme.MaterialDark}">
+						</ResourceDictionary>
+					</ResourceDictionary.ThemeDictionaries>
+				</ResourceDictionary>
+			</themes:MaterialTheme.Resources>
+		</themes:MaterialTheme>
+
+		<avalonia:MaterialIconStyles />
+		<dialogHostAvalonia:DialogHostStyles />
+
+	</Application.Styles>
+</Application>
