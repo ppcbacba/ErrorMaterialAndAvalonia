@@ -2,28 +2,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:AvaloniaApplication1.ViewModels"
+			    xmlns:vm="clr-namespace:AvaloniaApplication1.ViewModels"
 			 xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaApplication1.Views.MainView"
-             x:DataType="vm:MainViewModel">
-	<Design.DataContext>
-		<!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-		<vm:MainViewModel />
-	</Design.DataContext>
-
+             x:Class="AvaloniaApplication1.Views.aboutView"
+			 x:DataType="vm:aboutViewModel">
+	<UserControl.Styles>
+		<Style Selector="Button">
+			<Setter	Property="IsEnabled" Value="True" />
+		</Style>
+	</UserControl.Styles>
 	<StackPanel>
-	
 		<Button Command="{Binding ConfirmDialogCommand } "
-			 
-				Classes="Dark"
+				IsEnabled="True"
+				Classes="Flat"
 				Content="Confirm Dialog"/>
-		
+		<TextBox FontSize="14" Width="100"  VerticalAlignment="Center"/>
 
 	</StackPanel>
-
-
 </UserControl>

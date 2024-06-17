@@ -4,8 +4,11 @@ using AvaloniaApplication1.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Avalonia;
+using Avalonia.Platform;
 using Material.Dialog;
 using Material.Dialog.Icons;
+using System;
+using System.Threading.Tasks;
 
 namespace AvaloniaApplication1.ViewModels;
 
@@ -25,10 +28,12 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
+
     [RelayCommand]
-    public void ConfirmDialog()
+    public void  ConfirmDialog()
     {
-        DialogHelper.CreateAlertDialog(new AlertDialogBuilderParams
+        //if (_window == null) return;
+        var result = DialogHelper.CreateAlertDialog(new AlertDialogBuilderParams
         {
             ContentHeader = "Confirm action",
             SupportingText = "Are you sure to DELETE 20 FILES?",
@@ -36,7 +41,7 @@ public partial class MainViewModel : ViewModelBase
             NegativeResult = new DialogResult("cancel"),
             DialogHeaderIcon = DialogIconKind.Help,
             DialogButtons = new[]
-            {
+               {
                 new DialogButton
                 {
                     Content = "CANCEL",
@@ -47,7 +52,8 @@ public partial class MainViewModel : ViewModelBase
                     Result = "delete"
                 }
             }
-        }).ShowDialog(_window);
+        }).ShowDialog(_window).Result;
+        Console.WriteLine(result);
     }
 
 }
