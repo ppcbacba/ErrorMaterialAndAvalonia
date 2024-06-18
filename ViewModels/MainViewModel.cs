@@ -60,5 +60,38 @@ public partial class MainViewModel : ViewModelBase
         }).ShowDialog(_window);
         Console.WriteLine(result);
     }
+    [RelayCommand]
+    public async void CustomDialog()
+    {
+        //show InputDialog.axmal
+        _window = getCurrentWindow();
+        var dialog=DialogHelper.CreateCustomDialog(new CustomDialogBuilderParams
+        {
+            ContentHeader = "Custom Dialog",
+            SupportingText = "This is a custom dialog",
+            StartupLocation = WindowStartupLocation.CenterOwner,
+            DialogHeaderIcon = DialogIconKind.Info,
+            Content = new InputDialog(),
+          
+        });
+        var result = dialog.ShowDialog(_window);
+    }
+
+    [RelayCommand]
+    public async void Message()
+    {
+        _window = getCurrentWindow();
+        var dialog = DialogHelper.CreateAlertDialog(new AlertDialogBuilderParams
+        {
+            WindowTitle = "Message",
+            ContentHeader = "欢迎",
+            SupportingText = "数据已经保存",
+            DialogHeaderIcon = DialogIconKind.Info,
+            Width=300,
+            StartupLocation = WindowStartupLocation.CenterOwner
+        });
+        var result = await dialog.ShowDialog(_window);
+       
+    }
 
 }

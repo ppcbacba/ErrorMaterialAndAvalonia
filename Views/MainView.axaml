@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:AvaloniaApplication1.ViewModels"
+             xmlns:views="clr-namespace:AvaloniaApplication1.Views;assembly=AvaloniaApplication1"
 			 xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
@@ -22,6 +23,13 @@
 				Classes="Dark"
 				Content="Confirm Dialog"/>
 		
+		<Button Command="{Binding CustomDialogCommand}"
+				Classes="Light"
+				Content="Custom Dialog" />
+			
+			<Button Command="{Binding MessageCommand}"
+					Classes="Light"
+				Content="Message Dialog" />
 
 	</StackPanel>
 	</dialogHostAvalonia:DialogHost>

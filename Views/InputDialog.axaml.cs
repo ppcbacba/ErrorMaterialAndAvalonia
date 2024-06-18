@@ -1,5 +1,7 @@
 using Avalonia.Controls;
 
+using AvaloniaApplication1.ViewModels;
+
 namespace AvaloniaApplication1.Views
 {
     public partial class InputDialog : UserControl
@@ -7,6 +9,7 @@ namespace AvaloniaApplication1.Views
         public InputDialog()
         {
             InitializeComponent();
+            DataContext = new InputDialogViewModel();
         }
     }
 }
